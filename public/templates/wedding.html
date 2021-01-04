@@ -1,0 +1,136 @@
+<div id="wedding-screen" data-ng-init="WeddingController">
+	<div class="hi-icon-effect">
+		<button class="hi-icon" data-ng-click="googleSignIn();"></button>
+	</div>
+	<div class="invitation">
+		<ul id="elasticstack" class="elasticstack">
+			<li>
+				<div class="marriage-image" alt="01">
+					<img src="img/ido.png" class="i-do">
+					<img src="img/metoo.png" class="me-too">
+				</div>
+				<div class="bottomline">
+					<img src="img/std02.png" width="150px">
+				</div>
+			</li>
+			<li>
+				<div class="bottomline" style="margin-top: -50px;">
+					<img src="img/rings.png" width="150px">
+				</div>
+				<p class="odd-text">Because you have</p>
+				<p class="even-text">believed in us</p>
+				<p class="odd-text">Celebrated with us</p>
+				<p class="even-text">loved</p>
+				<p class="odd-text">And encouraged us</p>
+				<p class="even-text">We invite you to join us</p>
+				<p class="odd-text">As we exchange</p>
+				<p class="even-text">marriage vows</p>
+			</li>
+			<li>
+				<div style="display:flex;">
+					<img src="img/floral-left.png" width="150px" height="150px">
+					<div style="margin: auto;">
+						<p class="main-person">Yogiraj</p>
+						<p class="main-person" style="font-size: x-large;">&</p>
+						<p class="main-person">Pranita</p>
+					</div>
+					<img src="img/floral-right.png" width="150px" height="150px">
+				</div>
+				<br/>
+				<p class="invite-content">request the honor of your presence</p>
+				<p class="invite-content">as they celebrate their marriage</p>
+				<br/>
+				<p style="font-weight: bold;">WEDNESDAY | NOVEMBER 16, 2016 | 12.46 PM</p>
+				<br/>
+				<h5 class="bottomline">
+                    <img src="img/love-bird.png" width="150px">
+                </h5>
+			</li>
+			<li>
+				<div class="map-content" style="text-decoration:none; overflow:hidden; height:450px; width:475px; max-width:100%;">
+					<div id="google-maps-display" style="height:100%; width:100%;max-width:100%;">
+						<iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Akshta+Mangal+Karyalaya,+Osmanabad&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
+					</div>
+				</div>
+				<h5 class="bottomline"><img src="img/pin.svg" width="40px" style="padding-bottom: 20px;">&nbsp;Ceremony Location</h5>
+			</li>
+			<li>
+				<br/>
+				<br/>
+				<br/>
+				<p class="invite-content">Jeune marié</p>
+				<p class="even-text">Dharmaraj Pujari : 97666 65303</p>
+				<p class="even-text">Rajan Pujari : 99700 18003</p>
+				<br/>
+				<p class="invite-content">La mariée</p>
+				<p class="even-text">Vipul Mokashe : 98233 59264</p>
+				<br/>
+				<br/>
+				<p class="bottomline">Répondez S'il Vous Plaît</p>
+			</li>
+		</ul>
+	</div>
+	<input type="hidden" id="notifier" value="false">
+	<div id="messages" data-ng-show="users.messages.length > 0">
+		<ul id="messageContent">
+			<li ng-repeat="userMessage in users.messages" repeat-done="changeNotifier()">
+				<div class="round-box">
+					<div class="profile-img">
+						<img src="{{userMessage.photoUrl}}" width="100%" class="img-circle">
+					</div>
+					<div class="message">
+						<div class="message-content">
+							<div class="message-by">
+								{{userMessage.displayName}}
+							</div>{{userMessage.message}}
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="modal fade in" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+		<div class="modal-backdrop fade in"></div>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">Hi {{user.displayName}}, we would like to hear from you</h4>
+				</div>
+				<div class="modal-body">
+					<div style="display: flex;">
+						<img src="{{user.photoUrl}}" width="100px" height="100px" class="img-circle">
+						<textarea class="form-control" placeholder="Your message goes here. :)" rows="5" id="comment" style="margin-left: 25px;" data-ng-model="messageContent" maxlength="100"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="left-side">
+						<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Never mind</button>
+					</div>
+					<div class="divider"></div>
+					<div class="right-side">
+						<button type="button" class="btn btn-danger btn-simple" ng-click="saveData();">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="helper" class="hi-icon-effect">
+		<img src="img/drag_the_slides.png" width="150px;" id="helper_note">
+	</div>
+	<script src="lib/draggabilly.pkgd.min.js"></script>
+	<script src="dist/elasticStack.min.js"></script>
+	<script>
+		new ElastiStack(document.getElementById('elasticstack'));
+	</script>
+	<script src="lib/unslider-min.js"></script>
+	<script>
+		$('#notifier').change(function () {
+			$('#messages').unslider({
+				animation: 'fade',
+				autoplay: true,
+				arrows: false
+			});
+		});
+	</script>
+</div>
